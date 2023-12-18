@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>New Instrument</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<div th:replace="~{instruments/header :: header}"></div>
+<div class="container">
+  <form th:action="@{/instruments}" th:method="POST" th:object="${musical_instrument}">
+    <div class="input-field">
+      <label for="name">Instrument Name:</label>
+      <input type="text" id="name" name="name" th:field="*{name}" required>
+      <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
+    </div>
+    <br>
+
+    <div class="input-field">
+      <label for="type">Instrument Type:</label>
+      <input type="text" id="type" name="type" th:field="*{type}" required>
+      <div style="color:red" th:if="${#fields.hasErrors('type')}" th:errors="*{type}">Type Error</div>
+    </div>
+    <br>
+
+    <div class="input-field">
+      <label for="brand">Brand:</label>
+      <input type="text" id="brand" name="brand" th:field="*{brand}" required>
+      <div style="color:red" th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}">Brand Error</div>
+    </div>
+    <br>
+
+    <div class="input-field">
+      <label for="price">Price:</label>
+      <input type="text" inputmode="decimal" id="price" name="price" pattern="[0-9]*[.,]?[0-9]*" th:field="*{price}" required>
+      <div style="color:red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price Error</div>
+    </div>
+    <br>
+
+    <div class="input-field">
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" name="quantity" th:field="*{quantity}" required>
+      <div style="color:red" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}">Quantity Error</div>
+    </div>
+    <br>
+
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+  </form>
+</div>
+</body>
+</html>

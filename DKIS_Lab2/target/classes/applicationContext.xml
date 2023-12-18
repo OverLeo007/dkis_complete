@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+  <context:property-placeholder location="classpath:microchip.properties"/>
+
+  <bean id="memoryBean"
+    class="ru.paskal.Lab2.Dependences.Memory">
+    <constructor-arg value="${memory.size}"/>
+  </bean>
+
+  <bean id="cpuBean"
+    class="ru.paskal.Lab2.Dependences.Processor">
+    <constructor-arg value="${cpu.modelName}"/>
+  </bean>
+
+  <bean id="cpuMicrochip"
+    class="ru.paskal.Lab2.Microchip">
+    <constructor-arg name="component" ref="cpuBean"/>
+    <constructor-arg name="model" value="${cpuMicrochip.modelName}"/>
+    <property name="id" value="${cpuMicrochip.id}"/>
+  </bean>
+
+  <bean id="ramMicrochip"
+    class="ru.paskal.Lab2.Microchip">
+    <constructor-arg name="component" ref="memoryBean"/>
+    <constructor-arg name="model" value="${ramMicrochip.modelName}"/>
+    <property name="id" value="${ramMicrochip.id}"/>
+  </bean>
+
+</beans>

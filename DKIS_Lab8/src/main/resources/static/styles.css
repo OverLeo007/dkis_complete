@@ -1,0 +1,14 @@
+.card-content {
+  height: 150px;
+  overflow: hidden;
+}
+.card-content span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.btn {
+  width: 100%;
+  margin-top: 20px;
+}
